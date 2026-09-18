@@ -1,0 +1,1 @@
+https://trabalho-autenticacao.pages.dev/oauth/callback/google
