@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: #f4f5f7;
+  color: #222;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#status {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+#login-links a {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #2b6cb0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+#login-links a:hover {
+  background-color: #1a4e8a;
+}
+
+#logout-form button {
+  padding: 0.6rem 1.2rem;
+  background-color: #c53030;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+#logout-form button:hover {
+  background-color: #9b2c2c;
+}
