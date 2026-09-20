@@ -8,7 +8,7 @@ export async function onRequestGet(context) {
   const provider = params.provider;
 
   if (provider !== "google" && provider !== "github") {
-    return new Response("Not found", { status: 404 });
+    return new Response("Not found", { status: 404, headers: { "Cache-Control": "no-store" } });
   }
 
   const url = new URL(request.url);
@@ -17,13 +17,13 @@ export async function onRequestGet(context) {
   const state = url.searchParams.get("state");
 
   if (error || !code || !state) {
-    return new Response("Requisicao invalida", { status: 400 });
+    return new Response("Requisicao invalida", { status: 400, headers: { "Cache-Control": "no-store" } });
   }
 
   const cookies = parseCookies(request);
   const txCookie = cookies["__Host-oauth-tx"];
   if (!txCookie) {
-    return new Response("Transacao ausente", { status: 400 });
+    return new Response("Transacao ausente", { status: 400, headers: { "Cache-Control": "no-store" } });
   }
 
   const txHash = await sha256Base64Url(txCookie);
@@ -37,11 +37,11 @@ export async function onRequestGet(context) {
     .first();
 
   if (!tx) {
-    return new Response("Transacao invalida ou expirada", { status: 400 });
+    return new Response("Transacao invalida ou expirada", { status: 400, headers: { "Cache-Control": "no-store" } });
   }
 
   if (tx.state_hash !== stateHash) {
-    return new Response("State invalido", { status: 400 });
+    return new Response("State invalido", { status: 400, headers: { "Cache-Control": "no-store" } });
   }
 
   await env.DB.prepare(`DELETE FROM oauth_transactions WHERE id_hash = ?`)
@@ -147,7 +147,7 @@ export async function onRequestGet(context) {
       if (revokeResponse.status !== 204) throw new Error("falha ao revogar autorizacao");
     }
   } catch (err) {
-    return new Response("Falha na autenticacao", { status: 400 });
+      return new Response("Falha na autenticacao", { status: 400, headers: { "Cache-Control": "no-store" } });
   }
 
   const sessionId = randomToken();

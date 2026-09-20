@@ -7,7 +7,7 @@ export async function onRequestGet(context) {
   const provider = params.provider;
 
   if (provider !== "google" && provider !== "github") {
-    return new Response("Not found", { status: 404 });
+    return new Response("Not found", { status: 404, headers: { "Cache-Control": "no-store" } });
   }
 
   const config = PROVIDERS[provider];
