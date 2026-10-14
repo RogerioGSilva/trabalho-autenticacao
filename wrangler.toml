@@ -1,0 +1,7 @@
+name = "trabalho-autenticacao"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "oauth-sessions-rogerio"
+database_id = "035b12ee-fedd-46a9-845a-445e4c6e7e44"
