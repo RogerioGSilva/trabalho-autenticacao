@@ -1,1 +1,0 @@
-CREATE TABLE teste_bloqueio (id INTEGER PRIMARY KEY
